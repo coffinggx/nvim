@@ -11,6 +11,7 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
+					"clangd",
 					"rust_analyzer",
 					"tsserver",
 					"html",
@@ -39,6 +40,7 @@ return {
 					"pylint", -- python linter
 					"eslint_d",
 					"rustfmt",
+					"clang-format",
 				},
 			})
 		end,

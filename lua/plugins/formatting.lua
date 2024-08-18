@@ -1,10 +1,13 @@
+-- formatting.lua
+
 return {
 	"stevearc/conform.nvim",
 	lazy = true,
-	event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
+	event = { "BufReadPre", "BufNewFile" }, -- Event triggers to load the plugin
 	config = function()
 		local conform = require("conform")
 
+		-- Setup the conform plugin with formatters for different filetypes
 		conform.setup({
 			formatters_by_ft = {
 				javascript = { "prettier" },
@@ -22,14 +25,16 @@ return {
 				terraform = { "terraform_fmt" },
 				python = { "isort", "black" },
 				rust = { "rustfmt" },
+				c = { "clang-format" },
 			},
-			format_on_save = {
+			format_after_save = {
 				lsp_fallback = true,
 				async = true,
 				timeout_ms = 1000,
 			},
 		})
 
+		-- Key mapping for manual formatting
 		vim.keymap.set({ "n", "v" }, "<leader>ff", function()
 			conform.format({
 				lsp_fallback = true,
@@ -37,5 +42,16 @@ return {
 				timeout_ms = 1000,
 			})
 		end, { desc = "Format file or range (in visual mode)" })
+		-- Optionally, you can set up format on save
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			pattern = "*",
+			callback = function()
+				conform.format({
+					lsp_fallback = true,
+					async = true,
+					timeout_ms = 1000,
+				})
+			end,
+		})
 	end,
 }
