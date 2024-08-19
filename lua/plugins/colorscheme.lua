@@ -8,6 +8,7 @@ return {
 			require("catppuccin").setup({
 				transparent_background = true,
 			})
+			vim.cmd([[colorscheme catppuccin]])
 		end,
 	},
 	{
@@ -21,7 +22,7 @@ return {
 				terminal_colors = true, -- sets terminal colors (e.g. `g:terminal_color_0`)
 				sidebars = { "qf", "help" },
 			})
-			vim.cmd([[colorscheme tokyonight-night]])
+			--vim.cmd([[colorscheme tokyonight-night]])
 		end,
 	},
 }

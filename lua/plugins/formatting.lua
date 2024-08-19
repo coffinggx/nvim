@@ -6,8 +6,6 @@ return {
 	event = { "BufReadPre", "BufNewFile" }, -- Event triggers to load the plugin
 	config = function()
 		local conform = require("conform")
-
-		-- Setup the conform plugin with formatters for different filetypes
 		conform.setup({
 			formatters_by_ft = {
 				javascript = { "prettier" },
