@@ -3,6 +3,12 @@
         "vim",
         "grep",
         "window",
-        "on_attach"
+        "on_attach",
+        "import",
+        "nvim",
+        "cmp",
+        "plugin",
+        "completions",
+        "completion"
     ]
 }
